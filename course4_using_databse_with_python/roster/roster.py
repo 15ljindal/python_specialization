@@ -62,12 +62,3 @@ for entry in json_data:
         ( user_id, course_id, role ) )
 
     conn.commit()
-
-cur.execute('''
-    SELECT 'XYZZY' || hex(User.name || Course.title || Member.role ) AS X FROM 
-    User JOIN Member JOIN Course 
-    ON User.id = Member.user_id AND Member.course_id = Course.id
-    ORDER BY X LIMIT 1
-    ''')
-ans = cur.fetchone()[0]
-print(f"ANS: {ans}")
